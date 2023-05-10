@@ -64,8 +64,6 @@ class _HomePageState extends State<HomePage> {
 
           _showGraph(),
 
-
-
           Expanded(
             child: ListView.builder(
               itemCount: bands.length,
@@ -184,14 +182,19 @@ class _HomePageState extends State<HomePage> {
 
       Map<String, double> dataMap = new Map();
         // dataMap.putIfAbsent('Flutter', () => 5);
-        bands.forEach((band) {
+
+        for (var band in bands) {
           dataMap.putIfAbsent(band.name, () => band.votes.toDouble());
-        });
+        }
+        // bands.forEach((band) {
+          
+        //   dataMap.putIfAbsent(band.name, () => band.votes.toDouble());
+        // });
         
 
-        return Container(
+        return SizedBox(
           width: double.infinity,
-          height: 300,
+          height: 200,
           child: PieChart(dataMap: dataMap)
         );
     }
